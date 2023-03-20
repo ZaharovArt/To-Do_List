@@ -27,6 +27,7 @@
 #include<ctime>
 #include<cstring>
 #include< sstream >
+#include<conio.h>
 
 
 struct date
@@ -47,7 +48,7 @@ struct delo
 
 
 void show_menu();
-void add_Delo(delo* d, int &size);
+void add_Delo(delo*& d, int &size);
 void dell_Delo(delo* d, int &size);
 void edit_Delo(delo* d, int &size);
 void find_Delo(delo* d, int &size);
@@ -116,7 +117,7 @@ void show_menu() {
     std::cout << "[7]  Выход." << std::endl;
 };
 
-void add_Delo(delo* d, int &size) {
+void add_Delo(delo*& d, int &size) {
 
     delo* d_temp = new delo[size + 1];
 
@@ -124,12 +125,15 @@ void add_Delo(delo* d, int &size) {
     {
         d_temp[i] = d[i];
     }
-   
+
+    cin.getline(d_temp[size].name, 100);
     cout << " Введите название задачи: ";
     cin.getline(d_temp[size].name,100);
 
     cout << " Введите приоритет (1-10): ";
     cin >> d_temp[size].prior;
+
+    cin.getline(d_temp[size].descript, 100);
     cout << " Введите описаие задачи: ";
     cin.getline(d_temp[size].descript, 100);
     cout << " Введите день: ";
